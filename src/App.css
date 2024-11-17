@@ -1,38 +1,302 @@
-.App {
-  text-align: center;
+:root {
+  --white-background: #ffffff;
+  --dark-background-nav: rgb(33, 35, 42);
+  --dark-background-body: #0d1117;
+  --dark-background-items: #151b23;
+  --black-color: rgba(43, 40, 58, 1);
+  --dark-mode-background:  #000000;
+  --font-family-primary: "Oleo Script", system-ui;
+  --font-family-secondary: "Inika", serif;;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.logo {
+  font-family: Inter;
+  text-align: left;
+  color: rgba(0, 0, 0, 1);
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+.navbar.dark-mode .logo {
   color: white;
 }
-
-.App-link {
-  color: #61dafb;
+.page {
+  min-height: 70vh!important;
+  background: rgb(243, 243, 243)!important;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+nav {
+  background: rgb(255, 255, 255);
+ 
+}
+.link {
+  color: rgba(77, 77, 77, 1) ;
+  font-family:Arial, Helvetica, sans-serif;
+}
+.navbar.dark-mode .link {
+  color: rgb(184, 184, 184) !important;
+  
+}
+.active, .link:hover {
+  color: rgba(22, 22, 22, 1)!important;
+  border-bottom: 1px solid rgba(22, 22, 22, 1);
+}
+.navbar.dark-mode .active, .navbar.dark-mode .link:hover {
+  color: rgb(226, 226, 226)!important;
+  border-bottom: 1px solid rgb(221, 220, 220);
+}
+
+.footer {
+  background-color: #19283f;
+  min-height: 100px;
+}
+.gmail {
+  width: 27px!important;
+  height: 27px!important;
+  margin-top: -3px!important;
+}
+
+.whatsUp {
+  color: #25d366;
+  margin-top: 3px!important;
+}
+
+.modeIcon {
+  width: 45px;
+  height: 20px;
+  background-color: black;
+  padding:  2px;
+}
+.modeIcon .circle {
+  width: 16px;
+  height: 16px;
+  background-color: var(--white-background);
+  transform-origin: right;
+  transition: transform .5s;
+  margin-left: 1px;
+  
+}
+
+.navbar.dark-mode .mode p {
+  color: white!important;
+}
+
+.search{
+  background-color: var(--dark-mode-background)!important;
+  border: 1px solid #3d444db3!important;
+  font-size: 14px!important; 
+  min-width: 200px!important;
+}
+@media (max-width:875px) {
+  .search {
+    margin-left: -100px!important;
   }
+}
+@media (max-width:590px) {
+  .search {
+    margin-left: -150px!important;
+  }
+}
+.search::placeholder{
+  color: rgb(218, 218, 218)!important;
+}
+.navbar.dark-mode {
+  background-color: var(--dark-mode-background)!important;
+  border-bottom: 1px solid #3d444db3;
+  z-index: 900!important;
+}
+
+.navbar.dark-mode .search{
+  background-color: #0d1117!important;
+  color: white!important;
+  border-color: #3d444db3!important;
+}
+.navbar.dark-mode .modeIcon .circle{
+  background-color: var(--dark-mode-background);
+  transform: translateX(24px);
+ 
+}
+.navbar.dark-mode .modeIcon {
+  background-color: white;
+  
+ 
+}
+.navbar.dark-mode .search::placeholder, .nav.dark-mode .search {
+  color: #9198a1!important;
+}
+.navbar.dark-mode .search-icon {
+  color: white!important;
+}
+
+
+.home {
+  background-image: url('./images/home.jpg')!important;
+  background-size: cover!important;
+  background-repeat: no-repeat!important;
+  background-position: center!important;
+  height: 110vh!important;
+}
+.home h1 {
+  background-color:#0d11177c;
+}
+.expl-path {
+  background-color: #0d1117da!important;
+}
+
+.about {
+  background-image: url('./images/about.jpg')!important;
+  background-size: cover!important;
+  background-repeat: no-repeat!important;
+  background-position: center!important;
+  height: 110vh!important;
+}
+
+.sidebar {
+  background-color: var(--white-background);
+  min-width: 220px;
+}
+@media (max-width: 850px) {
+  .propgramming-layout {
+    flex-direction: column!important;
+  }
+  .sidebar-component {
+    display: flex!important;
+    justify-content: left!important;
+    flex-wrap: wrap!important;
+    flex-direction: row!important;
+    gap: 20px!important;
+  }
+  
+}
+@media (max-width:950px) {
+  .mode p{
+    display: none!important;
+  }
+}
+.active-side-link, .side-link:hover {
+  background-color: #b4b4b4;
+}
+.sidebar.dark-mode  {
+  background-color: var(--dark-background-items)!important;
+  color: white!important;
+}
+.sidebar.dark-mode .side-link{
+  color: white!important;
+}
+
+.filter {
+  border: none!important;
+}
+.filter:hover {
+  background-color: var(--dark-background-items)!important;
+  color: white!important;
+}
+.filter.isActive {
+  background-color: var(--dark-background-items)!important;
+  color: white!important;
+}
+
+/* .scroll-bar {
+  overflow-y: scroll!important;
+  max-height: 700px!important;
+}
+.scroll-bar::-webkit-scrollbar {
+  display: none; 
+ 
+} */
+.card {
+  height: 355px!important;
+  overflow: hidden!important;
+  
+}
+.sections .card {
+  height: 375px!important;
+  overflow: hidden!important;
+  
+}
+
+.publisher-image {
+  max-width: 50px!important;
+  max-height: 50px!important;
+}
+
+.lable {
+  margin-right: -20px!important;
+  transform: rotate(-40deg);
+  -webkit-transform: rotate(-40deg);
+  -moz-transform: rotate(-40deg);
+  -ms-transform: rotate(-40deg);
+  -o-transform: rotate(-40deg);
+}
+.pro {
+  background-color: rgb(83, 43, 226);
+}
+.free {
+  background-color: rgb(43, 226, 195);
+}
+
+.courses.dark-mode {
+  background-color: var(--dark-mode-background);
+}
+.body-page.dark-mode {
+  background-color: var(--dark-mode-background);
+}
+.body-page.dark-mode .card, .courses.dark-mode .card {
+  background-color: var(--dark-background-items);
+  color: white!important;
+  outline: 2px solid white;
+  box-shadow: 0 0 5px rgba(0, 183, 255, 0.623),
+    0 0 20px rgba(0, 183, 255, 0.486), 0 0 20px rgba(0, 183, 255, 0.596), 
+    0 0 20px rgba(0, 183, 255, 0.5), 0 0 20px rgba(0, 183, 255, 0.507);
+}
+.courses.dark-mode .loading{
+  color: white!important;
+}
+.sections.dark-mode .loading{
+  color: white!important;
+}
+.courses.dark-mode .course-name{
+  color: white;
+}
+.courses.dark-mode .filter {
+  color: white!important;
+  background-color: rgb(29, 29, 29)!important;
+}
+
+.courses.dark-mode .filter.isActive, 
+.courses.dark-mode .filter:hover {
+  background-color: white!important;
+  color: black!important;
+}
+
+.load {
+  margin: 50px auto;
+  background-color: #000;
+  height: 1000px;
+}
+.load div {
+  width: 50px;
+  height: 50px;
+  background-color: orchid;
+  margin-top: 50px !important;
+  margin: 5px;
+  animation-name: up-and-down;
+  animation-duration: 0.9s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  
+
+}
+.load .load-two {
+  animation-delay: 0.3s;
+}
+.load .load-three {
+  animation-delay: 0.6s;
+}
+@keyframes up-and-down {
   to {
-    transform: rotate(360deg);
-  }
+      opacity: 0.2;
+      transform: translateY(-20px);
+      -webkit-transform: translateY(-20px);
+      -moz-transform: translateY(-20px);
+      -ms-transform: translateY(-20px);
+      -o-transform: translateY(-20px);
+}
 }
