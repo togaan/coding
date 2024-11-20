@@ -20,8 +20,8 @@ const db = getFirestore(app);
 //get vans from database
 
 export const getCourses = async () => {
-  const vanSnapshot = await getDocs(collection(db, 'data'));
-  const courses = await Promise.all(vanSnapshot.docs.map(async (doc) => {
+  const coursesSnapshot = await getDocs(collection(db, 'data'));
+  const courses = await Promise.all(coursesSnapshot.docs.map(async (doc) => {
     const itemsSnapshot = await getDocs(collection(doc.ref, 'items'));
     const items = await Promise.all(itemsSnapshot.docs.map(async (itemDoc) => {
       const linksSnapshot = await getDocs(collection(itemDoc.ref, 'links'));
@@ -37,17 +37,21 @@ export const getCourses = async () => {
   return courses;
 }
 
-// export const getCourses = async () => {
-//   const vanSnapshot = await getDocs(collection(db, 'data'));
-//   const courses = await Promise.all(vanSnapshot.docs.map(async (doc) => {
+// export const getProjects = async () => {
+//   const projectsSnapshot = await getDocs(collection(db, 'projects'));
+//   const projects = await Promise.all(projectsSnapshot.docs.map(async (doc) => {
 //       const itemsSnapshot = await getDocs(collection(doc.ref, 'items'));
 //       const items = itemsSnapshot.docs.map(itemDoc => ({ id: itemDoc.id, ...itemDoc.data() }));
       
 //       return { id: doc.id, ...doc.data(), items }; // Add items to the course object
 //   }));
   
-//   console.log(courses);
-//   return courses;
+//   console.log(projects);
+//   return projects;
 // }
-
+export const loginUser = async () => {
+  const usersSnapshot = await getDocs(collection(db, 'users'))
+  const users = usersSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data()}))
+  return users
+}  
 

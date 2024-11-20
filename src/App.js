@@ -6,36 +6,40 @@ import {
   Route
    } from "react-router-dom";
 import { ModeProvider } from './ModeContext';
+
 import Layout from './Components/Layout';
 import Home from './pages/Home';
 import About from './pages/About';
 import PropgrammingLayout from './Components/ProgrammingLayout';
 import Courses, {loader as coursesLoader}  from './pages/programmingPages/Courses';
-import Projects from './pages/programmingPages/Projects';
-import Resources from './pages/programmingPages/Resources';
-import Sections, {loader as SectionsLoader} from './pages/programmingPages/Sections';
+import Sections, { loader as SectionsLoader } from './pages/programmingPages/Sections';
+import Login, { loader, action as loginaction } from './pages/Login';
+import Logout from './pages/Logout';
+import EmptyPage from './pages/EmptyPage';
+import Error from './Components/Error';
 
 
 const router = createBrowserRouter(createRoutesFromElements(
   
-  <Route element={<Layout/>}>
+  <Route element={<Layout />}>
+    <Route path='*' element={<EmptyPage />}  />
     <Route path='/' element={<Home/>} />
-    <Route path='about' element={<About/>} />
+    <Route path='about' element={<About />} />
+    <Route path='login' element={<Login />} loader={loader} action={loginaction}  />
+    <Route path='logout' element={<Logout/>} />
     <Route path='programming' element={<PropgrammingLayout />}>    
-      <Route index element={<Sections />} loader={SectionsLoader} />
-      <Route path=':id' element={<Courses />} loader={coursesLoader} />
-      <Route path=':id' element={<Projects/>} />
-      <Route path=':id' element={<Resources/>} />
+      <Route index element={<Sections />} loader={SectionsLoader} errorElement={<Error/>} />
+      <Route path=':id' element={<Courses />} loader={coursesLoader} errorElement={<Error/>}/>
     </Route>
   </Route>
 ))
 function App() {
   return (
     <ModeProvider>
-      <RouterProvider router={router}/>
+        <RouterProvider router={router} />
     </ModeProvider>
-    
   );
 }
+
 
 export default App;

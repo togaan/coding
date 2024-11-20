@@ -18,7 +18,7 @@
   color: white;
 }
 .page {
-  min-height: 70vh!important;
+  min-height: 75vh!important;
   background: rgb(243, 243, 243)!important;
 }
 
@@ -79,7 +79,7 @@ nav {
 }
 
 .search{
-  background-color: var(--dark-mode-background)!important;
+  background-color: white!important;
   border: 1px solid #3d444db3!important;
   font-size: 14px!important; 
   min-width: 200px!important;
@@ -95,7 +95,7 @@ nav {
   }
 }
 .search::placeholder{
-  color: rgb(218, 218, 218)!important;
+  color: rgb(0, 0, 0)!important;
 }
 .navbar.dark-mode {
   background-color: var(--dark-mode-background)!important;
@@ -103,7 +103,7 @@ nav {
   z-index: 900!important;
 }
 
-.navbar.dark-mode .search{
+.navbar.dark-mode .search, .login.dark-mode .search{
   background-color: #0d1117!important;
   color: white!important;
   border-color: #3d444db3!important;
@@ -134,7 +134,7 @@ nav {
   height: 110vh!important;
 }
 .home h1 {
-  background-color:#0d11177c;
+  background-color:#0d1117bd;
 }
 .expl-path {
   background-color: #0d1117da!important;
@@ -252,7 +252,7 @@ nav {
 .sections.dark-mode .loading{
   color: white!important;
 }
-.courses.dark-mode .course-name{
+.courses.dark-mode .course-name, .courses.dark-mode .not-found{
   color: white;
 }
 .courses.dark-mode .filter {
@@ -265,11 +265,20 @@ nav {
   background-color: white!important;
   color: black!important;
 }
-
+.section-link {
+  background-color: #242222!important;
+  color: white!important;
+}
 .load {
   margin: 50px auto;
-  background-color: #000;
+  background-color: rgb(243, 243, 243);
   height: 1000px;
+}
+.courses.dark-mode .load {
+  background-color: #000!important;
+}
+.sections.dark-mode .load {
+  background-color: #000!important;
 }
 .load div {
   width: 50px;
@@ -300,3 +309,45 @@ nav {
       -o-transform: translateY(-20px);
 }
 }
+
+.login.dark-mode, .logout.dark-mode {
+  background-color: var(--dark-background-items)!important;
+}
+.login.dark-mode h1, .login.dark-mode  .account{
+  color: white!important;
+}
+.login.dark-mode button{
+  background-color: rgb(65, 64, 59)!important;
+}
+.login.dark-mode .search::placeholder {
+  color: #b7bec7!important;
+}
+.login-form {
+  max-width: 600px!important;
+}
+.login-form button {
+  background-color: rgb(15, 29, 43)!important;
+}
+.login-form > input {
+  border: 1px solid rgba(209, 213, 219)!important;
+  height: 40px!important;
+  text-indent: 10px!important;
+  font-family: "Inter", sans-serif;
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05)!important;
+  font-weight: 400!important;
+}
+.empty-page.dark-mode {
+  background-color: var(--dark-background-items)!important;
+}
+.empty-page.dark-mode h1{
+  color: white!important;
+}
+.empty-page.dark-mode .empty-page-link{
+  background-color: white!important;
+  color: black!important;
+}
+ .empty-page-link{
+  background-color: var(--dark-background-body)!important;
+  color: white!important;
+}
+

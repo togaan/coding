@@ -2,8 +2,10 @@ import React from "react";
 import { useParams, useLoaderData, defer, Await, Link, useSearchParams } from "react-router-dom";
 import { getCourses } from "../../api";
 import { useMode } from "../../ModeContext";
+import { requireAuth } from "../../Authentication";
 
-export function loader() {
+export async function loader({ request }) {
+    await requireAuth(request)
     return defer({ courses: getCourses() })
   }
 
@@ -27,7 +29,8 @@ export function loader() {
         <div className={`courses w-100 p-3 ${!mode && 'dark-mode'}  `}>
             <React.Suspense fallback={
                 <>
-                    <h2 className="loading text-center pt-5">Loading courses...</h2>
+                    <h2 className="loading text-center pt-5">Loading...</h2>
+                    <h2 className="loading text-center pt-5">Please wait...</h2>
                     <div className="load pt-5 d-flex  justify-content-center">
                         <div className="load-one rounded-circle"></div>
                         <div className="load-two rounded-circle"></div>
@@ -42,7 +45,7 @@ export function loader() {
                         
                         // If no course is found, show a message or handle the error
                         if (!courses) {
-                            return <h2>No course found for ID: {id}</h2>;
+                            return <h2 className="not-found">No course found for ID: {id}</h2>;
                         }
                         
                         const displayedCourses = typeFilter

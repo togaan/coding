@@ -6,7 +6,8 @@ import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import { useMode } from "../ModeContext";
 
 const Header = () => {
-    const isLoggedIn = localStorage.getItem("loggedin")
+   
+    const isLoggedIn = localStorage.getItem('loggedin')
     const { mode, toggleMode } = useMode();
     
     return (
@@ -54,7 +55,7 @@ const Header = () => {
                             <NavLink
                             to='/logout'
                             className={`link text-decoration-none fw-bold fs-5 ${({isActive}) => isActive ? 'active': null}`}
-                        >Log out</NavLink>}
+                        >Logout</NavLink>}
                         
                     </div>
 

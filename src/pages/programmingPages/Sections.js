@@ -2,8 +2,10 @@ import React from "react";
 import { Link, defer, Await, useLoaderData } from "react-router-dom";
 import { useMode } from "../../ModeContext";
 import { getCourses } from "../../api";
+import { requireAuth } from "../../Authentication";
 
-export function loader() {
+export async function loader({ request }) {
+    await requireAuth(request)
     return defer({ sections: getCourses() })
   }
 
@@ -46,7 +48,7 @@ const Sections = () => {
                                                         <Link
                                                             key={index}
                                                             to={link.path}
-                                                            className="text-decoration-none btn btn-light shadow-sm"
+                                                            className="section-link text-decoration-none btn btn-light shadow-sm"
                                                         >{link.name}</Link>
                                                     ))}    
                                                 </div> 
