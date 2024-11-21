@@ -27,7 +27,7 @@ export async function action({ request }) {
         localStorage.setItem("loggedin", true);
         setTimeout(() => {
             window.location.reload()
-          }, 500)
+          }, 1000)
         return redirect(pathname);
 
     } else {

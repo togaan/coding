@@ -10,7 +10,7 @@ const Logout = () => {
         localStorage.removeItem('loggedin')
         setTimeout(() => {
             window.location.reload()
-          }, 500)
+          }, 1000)
         return navigate(`/`)
     }
 
