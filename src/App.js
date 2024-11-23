@@ -17,6 +17,7 @@ import Login, { loader, action as loginaction } from './pages/Login';
 import Logout from './pages/Logout';
 import EmptyPage from './pages/EmptyPage';
 import Error from './Components/Error';
+import { AuthProvider } from './Authentication';
 
 
 const router = createBrowserRouter(createRoutesFromElements(
@@ -36,7 +37,9 @@ const router = createBrowserRouter(createRoutesFromElements(
 function App() {
   return (
     <ModeProvider>
+      <AuthProvider>
         <RouterProvider router={router} />
+      </AuthProvider>
     </ModeProvider>
   );
 }

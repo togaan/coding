@@ -4,10 +4,12 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleUser } from '@fortawesome/free-regular-svg-icons';
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import { useMode } from "../ModeContext";
+import { useAuth } from "../Authentication";
+
 
 const Header = () => {
-   
-    const isLoggedIn = localStorage.getItem('loggedin')
+    const { isLoggedIn } = useAuth(); // Get logged-in status from context
+    // const isLoggedIn = localStorage.getItem('loggedin')
     const { mode, toggleMode } = useMode();
     
     return (

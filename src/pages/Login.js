@@ -4,11 +4,13 @@ import { useMode } from "../ModeContext";
 import { loginUser } from "../api";
 
 
+
 export function loader({ request }) {
     return new URL(request.url).searchParams.get("message")
 }
 
 export async function action({ request }) { 
+    
     const formData = await request.formData()
     const email = formData.get("email")
     const password = formData.get("password")
@@ -18,16 +20,13 @@ export async function action({ request }) {
 
     // Get user data by calling the loginUser function
     const userData = await loginUser(); // Ensure this returns the user data correctly.
-
+    
     // Check the authentication status
     const searchedUserFromDatabase = userData.findIndex(item => item.email === email)
 
     if (userData && email === userData[searchedUserFromDatabase].email && password === userData[searchedUserFromDatabase].password) {
         
         localStorage.setItem("loggedin", true);
-        setTimeout(() => {
-            window.location.reload()
-          }, 1000)
         return redirect(pathname);
 
     } else {
@@ -43,13 +42,14 @@ const Login = () => {
     const error = useActionData();
     
 
+    
     return (
         <div className={`page login ${!mode && 'dark-mode'}`}>
             <div className="container">
                 <h1 className="fw-bold text-center pb-5 pt-5">Sign in to your account</h1>
                 {message && <h3 className="fw-bold text-danger text-center pt-5 pb-3">{message}</h3>}
                 {error && <h3 className="fw-bold text-danger text-center pt-5 pb-3">{error}</h3>}
-                <Form method="post" replace className="login-form m-auto">
+                <Form method="post" replace className="login-form m-auto" >
                     <input
                         className="form-control search"
                         name="email"

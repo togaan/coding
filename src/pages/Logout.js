@@ -1,16 +1,15 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { useMode } from "../ModeContext";
+import { useAuth } from "../Authentication";
 
 const Logout = () => {
     const navigate = useNavigate()
-    // const { logout } = useAuth(); // Get logout function from context
+    const { logout } = useAuth(); // Get logout function from context
 
     const handleLogout = () => {
-        localStorage.removeItem('loggedin')
-        setTimeout(() => {
-            window.location.reload()
-          }, 1000)
+        logout()
+        // localStorage.removeItem('loggedin')
         return navigate(`/`)
     }
 

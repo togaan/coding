@@ -1,4 +1,5 @@
 import { redirect } from "react-router-dom"
+import React, { createContext, useContext, useState } from 'react';
 
 export async function requireAuth(request) {
     const pathname = new URL(request.url).pathname
@@ -11,26 +12,28 @@ export async function requireAuth(request) {
     
 }
 
-// const AuthContext = createContext();
 
-// export const AuthProvider = ({ children }) => {
-//     const [isLoggedIn, setIsLoggedIn] = useState(localStorage.getItem("loggedin") === "true");
 
-//     const login = () => {
-//         setIsLoggedIn(true);
-//         localStorage.setItem("loggedin", true);
-//     };
+export const AuthContext = createContext();
 
-//     const logout = () => {
-//         setIsLoggedIn(false);
-//         localStorage.removeItem('loggedin');
-//     };
+export const AuthProvider = ({ children }) => {
+    const [isLoggedIn, setIsLoggedIn] = useState(localStorage.getItem("loggedin") === "true");
 
-//     return (
-//         <AuthContext.Provider value={{ isLoggedIn, login, logout }}>
-//             {children}
-//         </AuthContext.Provider>
-//     );
-// };
+    const login = () => {
+        setIsLoggedIn(true);
+        localStorage.setItem("loggedin", true);
+    };
 
-// export const useAuth = () => useContext(AuthContext);
+    const logout = () => {
+        setIsLoggedIn(false);
+        localStorage.removeItem('loggedin');
+    };
+
+    return (
+        <AuthContext.Provider value={{ isLoggedIn, login, logout }}>
+            {children}
+        </AuthContext.Provider>
+    );
+};
+
+export const useAuth = () => useContext(AuthContext);
